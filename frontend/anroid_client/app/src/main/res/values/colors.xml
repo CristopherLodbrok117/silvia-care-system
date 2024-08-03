@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    
+    <color name="bg_green_aqua_strong">#0CA789</color>
+    <color name="bg_green_aqua_light">#ECFDF7</color>
+
+    <color name="bg_primary_strong">#0CA789</color>
+    <color name="bg_primary_light">#ECFDF7</color>
+    <color name="bg_white">#FFFFFFFF</color>
+
+    <color name="bg_msg_area">#F4FFFB</color>
+
+    <color name="txt_dark_color">#FF000000</color>
+    <color name="txt_grey_color">#9FA3A2</color>
+    <color name="txt_white_color">#FFFFFFFF</color>
+
+    <color name="border_grey_color">#838B88</color>
+    <color name="border_aqua_color">#4AD9DE</color>
+
+    <!-- =================== MAIN ACTIVITY =================== -->
+
+
+
+    <!-- =================== MAIN ACTIVITY =================== -->
+
+
+
+
+
+</resources>

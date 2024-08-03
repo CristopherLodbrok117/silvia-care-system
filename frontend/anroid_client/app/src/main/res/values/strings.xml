@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">SilviaCare</string>
+
+    <!-- GRADUATE TYPE LETTER-->
+    <!-- ================== MAIN ACTIVITY ================== -->
+    <string name="title">SILVIA CARE</string>
+
+    <string name="name_txt">Nombre</string>
+    <string name="nip_txt">NIP</string>
+
+    <string name="btn_login">Comenzar guardia</string>
+
+
+    <!-- ================== HOME ACTIVITY ================== -->
+    <string name="txt_last_default_message">AUN NO HAY MENSAJES</string>
+    <string name="hint_write_something">ESCRIBIR ALGO</string>
+    <string name="btn_send_default_msg">EN CAMINO</string>
+    <string name="btn_send_msg">ENVIAR</string>
+    
+    <string name="btn_medicines_msg">MEDICINAS</string>
+    <string name="btn_appointments_msg">CITAS</string>
+    <string name="btn_notes_msg">NOTAS Y PENDIENTES</string>
+    <string name="btn_diagnosis_msg">HISTORIAL MÉDICO</string>
+</resources>
