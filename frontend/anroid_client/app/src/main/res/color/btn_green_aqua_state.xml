@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Button default color-->
+    <item android:color="@color/bg_primary_strong"/>
+
+    <!-- Button pressed color-->
+    <item android:color="@color/bg_btn_pressed_aqua" android:state_pressed="true"/>
+
+    <!-- Button disabled color-->
+    <item android:color="@color/bg_btn_disabled_aqua" android:state_enabled="false"/>
+</selector>

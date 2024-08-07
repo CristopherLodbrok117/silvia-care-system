@@ -16,6 +16,102 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:background="@color/bg_green_aqua_light"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@color/bg_primary_strong">
+
+                <TextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="55sp"
+                    android:textStyle="italic|bold"
+                    android:textColor="@color/white"
+                    android:text="@string/title"/>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imgArc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-50dp"
+                app:srcCompat="@drawable/arc_green_aqua" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:background="@color/transparent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name_txt"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:ems="10"
+                    android:layout_marginTop="10dp"
+                    android:paddingHorizontal="10dp"
+                    android:background="@drawable/input_bg_white"
+                    android:inputType="text"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:hint="Escribe tu nombre" />
+
+                <TextView
+                    android:id="@+id/txtNip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/nip_txt"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:ems="10"
+                    android:layout_marginTop="10dp"
+                    android:paddingHorizontal="10dp"
+                    android:background="@drawable/input_bg_white"
+                    android:inputType="textPassword"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:hint="Escribir contraseña" />
+
+                <Button
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/btn_rounded_corners"
+                    app:backgroundTint="@color/btn_green_aqua_state"
+                    android:textColor="@color/white"
+                    android:text="@string/btn_login" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imgHeart"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                app:srcCompat="@drawable/main_logo" />
+        </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

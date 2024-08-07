@@ -3,13 +3,17 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
-    
+    <!-- Original aqua: #0CA789, brighter: #31BDB4  , Grey Background-->
     <color name="bg_green_aqua_strong">#0CA789</color>
     <color name="bg_green_aqua_light">#ECFDF7</color>
+    <color name="bg_grey_aqua">#385452</color>
 
     <color name="bg_primary_strong">#0CA789</color>
     <color name="bg_primary_light">#ECFDF7</color>
     <color name="bg_white">#FFFFFFFF</color>
+
+    <color name="bg_btn_pressed_aqua">#0B997E</color>
+    <color name="bg_btn_disabled_aqua">#7CB3A6</color>
 
     <color name="bg_msg_area">#F4FFFB</color>
 
