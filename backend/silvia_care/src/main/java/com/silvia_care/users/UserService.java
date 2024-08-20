@@ -29,7 +29,7 @@ assertTrue(encoder.matches("myPassword", result));*/
 
     }
 
-    public User findById(long id){
+    public User findById(Long id){
         Optional<User> optionalUser = repo.findById(id);
 
         return optionalUser.orElseThrow(() -> new UserNotFoundException("Usuario no encontrado"));

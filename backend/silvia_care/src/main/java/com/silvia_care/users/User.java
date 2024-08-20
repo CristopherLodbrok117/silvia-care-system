@@ -1,6 +1,9 @@
 package com.silvia_care.users;
 
+import com.silvia_care.notes.Note;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 
 @Entity
@@ -17,6 +20,9 @@ public class User {
 
     @Column(name = "is_admin")
     private boolean isAdmin;
+
+    @OneToMany(targetEntity = Note.class, fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Note> notes;
 
     public User() {}
 
