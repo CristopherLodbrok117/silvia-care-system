@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "notes")
 public class Note {
@@ -21,9 +19,10 @@ public class Note {
 
     private String title;
 
+    @Column(name = "detail")
     private String detail;
 
-    @Column(columnDefinition = "DATE")
+    @Column(name = "note_date", columnDefinition = "DATE")
     private LocalDate date;
 
     private boolean active;
@@ -31,5 +30,35 @@ public class Note {
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id")
     private User user;
+
+    public Note() {}
+
+    public Note(String title, String detail, LocalDate date, User user){
+        this.title = title;
+        this.detail = detail;
+        this.date = date;
+        this.active = true;
+        this.user = user;
+    }
+
+    public String getTitle(){
+        return title;
+    }
+
+    public String getDetail(){
+        return detail;
+    }
+
+    public LocalDate getDate(){
+        return date;
+    }
+
+    public User getUser(){
+        return user;
+    }
+
+    public boolean isActive(){
+        return active;
+    }
 
 }
