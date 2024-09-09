@@ -41,6 +41,10 @@ public class Note {
         this.user = user;
     }
 
+    public Long getId(){
+        return id;
+    }
+
     public String getTitle(){
         return title;
     }

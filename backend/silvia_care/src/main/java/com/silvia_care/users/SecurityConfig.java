@@ -40,7 +40,8 @@ public class SecurityConfig {
                     http.requestMatchers(HttpMethod.POST, "/api/users/login").permitAll();
 
                     // Any other request
-                    http.anyRequest().authenticated();
+                    //http.anyRequest().authenticated();
+                    http.anyRequest().permitAll(); // Only for testing
                 })
                 .build();
     }
