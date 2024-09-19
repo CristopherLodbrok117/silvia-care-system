@@ -1,4 +1,4 @@
-package com.silvia_care.users;
+package com.silvia_care.caregivers;
 
 import com.silvia_care.notes.Note;
 import jakarta.persistence.*;
@@ -7,8 +7,8 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "caregivers")
+public class Caregiver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,17 +21,17 @@ public class User {
     @Column(name = "is_admin")
     private boolean isAdmin;
 
-    @OneToMany(targetEntity = Note.class, fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(targetEntity = Note.class, fetch = FetchType.LAZY, mappedBy = "caregiver")
     private List<Note> notes;
 
-    public User() {}
+    public Caregiver() {}
 
-    public User(String name, String password) {
+    public Caregiver(String name, String password) {
         this.name = name;
         this.password = password;
     }
 
-    public User(String name, String password, boolean isAdmin) {
+    public Caregiver(String name, String password, boolean isAdmin) {
         this.name = name;
         this.password = password;
         this.isAdmin = isAdmin;

@@ -27,22 +27,22 @@ public class NoteRepositoryTests {
         final String USER_NAME = "Alejandra";
         final int EXPECTED_SIZE = 3;
 
-        List<Note> notes = repo.findByUser_Name(USER_NAME);
+        List<Note> notes = repo.findByCaregiver_Name(USER_NAME);
 
         assertThat(notes.size()).isEqualTo(EXPECTED_SIZE);
 
         notes.stream().forEach(note -> {
-            assertThat(note.getUser().getName()).isEqualTo(USER_NAME);
+            assertThat(note.getCaregiver().getName()).isEqualTo(USER_NAME);
         });
     }
 
     @Test
     void shouldReturnNotesByUserId(){
         final Long USER_ID = 1L;
-        List<Note> notes = repo.findByUser_Id(USER_ID);
+        List<Note> notes = repo.findByCaregiver_Id(USER_ID);
 
         notes.forEach(note -> {
-            assertThat(note.getUser().getId()).isEqualTo(USER_ID);
+            assertThat(note.getCaregiver().getId()).isEqualTo(USER_ID);
         });
     }
 

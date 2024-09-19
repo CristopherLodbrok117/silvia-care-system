@@ -8,15 +8,15 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Qualifier("notes")
+@Qualifier("noteRepository")
 @Repository
 public interface NoteRepository extends JpaRepository<Note, Long> {
 
     List<Note> findAll();
 
-    List<Note> findByUser_Name(String name);
+    List<Note> findByCaregiver_Name(String name);
 
-    List<Note> findByUser_Id(Long id);
+    List<Note> findByCaregiver_Id(Long id);
 
     //@Query("SELECT n FROM Note n WHERE n.title LIKE ?1")
     List<Note> findByTitleContains(String title);

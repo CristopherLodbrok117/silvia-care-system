@@ -31,6 +31,13 @@ public class NoteController {
         return ResponseEntity.ok(note);
     }
 
+    @GetMapping(params = "title")
+    public ResponseEntity<List<Note>> findByTitle(@RequestParam("title") String title){
+        List<Note> notes = noteService.findByTitlePattern(title);
+
+        return ResponseEntity.ok(notes);
+    }
+
     @PostMapping
     public ResponseEntity<Note> saveNote(@RequestBody Note note, UriComponentsBuilder ucb){
         Note newNote = noteService.save(note);

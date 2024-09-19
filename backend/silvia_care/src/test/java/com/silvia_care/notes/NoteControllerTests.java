@@ -2,10 +2,9 @@ package com.silvia_care.notes;
 
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
-import com.silvia_care.users.User;
-import com.silvia_care.users.UserRepository;
+import com.silvia_care.caregivers.Caregiver;
+import com.silvia_care.caregivers.CaregiverRepository;
 
-import org.json.JSONArray;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,13 +25,13 @@ public class NoteControllerTests {
     RestTemplate restTemplate = new RestTemplate();
 
     @Autowired
-    UserRepository userRepository;
+    CaregiverRepository userRepository;
 
     @Test
-    @DirtiesContext
+    //@DirtiesContext
     void shouldCreateANewNote() {
 
-        User alejandra = userRepository.findByName("alejandra");
+        Caregiver alejandra = userRepository.findByName("Alejandra");
 
         String noteTitle = "Nuevo titulo";
 

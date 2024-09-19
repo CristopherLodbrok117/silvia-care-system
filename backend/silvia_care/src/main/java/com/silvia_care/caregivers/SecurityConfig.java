@@ -1,4 +1,4 @@
-package com.silvia_care.users;
+package com.silvia_care.caregivers;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +15,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -72,6 +71,12 @@ public class SecurityConfig {
                 .build());
 
         userDetailsList.add(User.withUsername("pepe")
+                .password("1234")
+                .roles("USER")
+                .authorities("READ")
+                .build());
+
+        userDetailsList.add(User.withUsername("marco")
                 .password("1234")
                 .roles("USER")
                 .authorities("READ")

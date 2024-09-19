@@ -29,14 +29,14 @@ public class NoteService {
     public Note findById(Long id){
         Optional<Note> foundNote = noteRepository.findById(id);
 
-        return foundNote.orElseThrow(() -> new NoteException("No se encontro nota con id: " + id));
+        return foundNote.orElseThrow(() -> new NoteException("No existe ninguna nota con id: " + id));
     }
 
     public List<Note> findByTitlePattern(String title){
         List<Note> notes = noteRepository.findByTitleContains(title);
 
         if(notes.isEmpty()){
-            throw new NoteException("No notas con el titulo: " + title);
+            throw new NoteException("No existen notas con el titulo: " + title);
         }
 
         return notes;

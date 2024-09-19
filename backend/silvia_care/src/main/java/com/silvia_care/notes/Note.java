@@ -1,10 +1,8 @@
 package com.silvia_care.notes;
 
-import com.silvia_care.users.User;
+import com.silvia_care.caregivers.Caregiver;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
@@ -27,18 +25,18 @@ public class Note {
 
     private boolean active;
 
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @ManyToOne(targetEntity = Caregiver.class)
+    @JoinColumn(name = "caregiver_id")
+    private Caregiver caregiver;
 
     public Note() {}
 
-    public Note(String title, String detail, LocalDate date, User user){
+    public Note(String title, String detail, LocalDate date, Caregiver caregiver){
         this.title = title;
         this.detail = detail;
         this.date = date;
         this.active = true;
-        this.user = user;
+        this.caregiver = caregiver;
     }
 
     public Long getId(){
@@ -57,8 +55,8 @@ public class Note {
         return date;
     }
 
-    public User getUser(){
-        return user;
+    public Caregiver getCaregiver(){
+        return caregiver;
     }
 
     public boolean isActive(){
