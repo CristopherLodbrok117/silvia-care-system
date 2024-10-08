@@ -10,9 +10,9 @@ import java.util.Optional;
 @Qualifier("caregiverRepository")
 @Repository
 public interface CaregiverRepository extends CrudRepository<Caregiver, Long> {
-    Caregiver findByName(String name);
+    Caregiver findByUsername(String username);
 
-    Optional<Caregiver> findByNameAndPassword(String name, String password);
+    Optional<Caregiver> findByUsernameAndPassword(String name, String password);
 
     List<Caregiver> findAll();
 

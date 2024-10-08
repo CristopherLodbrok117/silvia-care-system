@@ -27,9 +27,9 @@ public class CaregiverController {
         return ResponseEntity.ok(caregiver);
     }
 
-    @GetMapping(params = "name")
-    public ResponseEntity<Caregiver> findByName(@RequestParam("name") String requestedName) {
-        Caregiver caregiver = service.findByName(requestedName);
+    @GetMapping(params = "username")
+    public ResponseEntity<Caregiver> findByUsername(@RequestParam("username") String requestedUsername) {
+        Caregiver caregiver = service.findByUsername(requestedUsername);
 
         return ResponseEntity.ok(caregiver);
     }

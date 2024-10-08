@@ -22,10 +22,10 @@ assertTrue(encoder.matches("myPassword", result));*/
         return repo.findAll();
     }
 
-    public Caregiver findByName(String name) {
-        Optional<Caregiver> optionalCaregiver = Optional.ofNullable(repo.findByName(name));
+    public Caregiver findByUsername(String username) {
+        Optional<Caregiver> optionalCaregiver = Optional.ofNullable(repo.findByUsername(username));
 
-        return optionalCaregiver.orElseThrow(() -> new CaregiverNotFoundException(name));
+        return optionalCaregiver.orElseThrow(() -> new CaregiverNotFoundException(username));
 
     }
 

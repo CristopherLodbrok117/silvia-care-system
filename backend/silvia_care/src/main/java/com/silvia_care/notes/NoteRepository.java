@@ -14,7 +14,7 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
 
     List<Note> findAll();
 
-    List<Note> findByCaregiver_Name(String name);
+    List<Note> findByCaregiver_Username(String username);
 
     List<Note> findByCaregiver_Id(Long id);
 

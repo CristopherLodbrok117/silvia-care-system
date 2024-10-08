@@ -2,10 +2,18 @@ package com.silvia_care.caregivers;
 
 import com.silvia_care.notes.Note;
 import jakarta.persistence.*;
+import lombok.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "caregivers")
 public class Caregiver {
@@ -14,60 +22,43 @@ public class Caregiver {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String name;
+    @Column(unique = true)
+    private String username;
 
     private String password;
 
-    @Column(name = "is_admin")
-    private boolean isAdmin;
+
+    @Column(name = "is_enabled")
+    private boolean isEnabled;
+
+    @Column(name = "account_no_expired")
+    private boolean accountNoExpired;
+
+    @Column(name = "account_no_locked")
+    private boolean accountNoLocked;
+
+    @Column(name = "credential_no_expired")
+    private boolean credentialNoExpired;
 
     @OneToMany(targetEntity = Note.class, fetch = FetchType.LAZY, mappedBy = "caregiver")
-    private List<Note> notes;
+    private List<Note> notes = new ArrayList<>();
 
-    public Caregiver() {}
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "caregiver_roles", joinColumns = @JoinColumn(name = "caregiver_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<RoleEntity> roles = new HashSet<>();
+
+
 
     public Caregiver(String name, String password) {
-        this.name = name;
+        this.username = name;
         this.password = password;
-    }
-
-    public Caregiver(String name, String password, boolean isAdmin) {
-        this.name = name;
-        this.password = password;
-        this.isAdmin = isAdmin;
-    }
-
-
-    public void setId(long id){
-        this.id = id;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public void setPassword(String password){
-        this.password = password;
-    }
-
-    public void setAdmin(boolean isAdmin){
-        this.isAdmin = isAdmin;
+        this.isEnabled = true;
+        this.accountNoExpired = true;
+        this.accountNoLocked = true;
+        this.credentialNoExpired = true;
     }
 
 
-    public long getId(){
-        return id;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public boolean isAdmin(){
-        return isAdmin;
-    }
 
 }
