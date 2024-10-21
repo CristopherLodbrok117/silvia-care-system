@@ -1,6 +1,8 @@
 package com.silvia_care.notes;
 
+import com.silvia_care.caregivers.CaregiverDetailService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -8,13 +10,15 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/notes")
+@RequestMapping("/api/v1/notes")
 public class NoteController {
 
     NoteService noteService;
+    CaregiverDetailService caregiverDetailService;
 
-    public NoteController(NoteService noteService){
+    public NoteController(NoteService noteService, CaregiverDetailService caregiverDetailService){
         this.noteService = noteService;
+        this.caregiverDetailService = caregiverDetailService;
     }
 
     @GetMapping

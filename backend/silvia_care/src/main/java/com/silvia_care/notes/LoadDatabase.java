@@ -7,9 +7,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Configuration
@@ -20,11 +23,13 @@ public class LoadDatabase {
 
     private final NoteRepository noteRepo;
     private final CaregiverRepository caregiverRepo;
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public LoadDatabase(@Qualifier("noteRepository") NoteRepository noteRepo
             ,@Qualifier("caregiverRepository") CaregiverRepository caregiverRepo){
         this.noteRepo = noteRepo;
         this.caregiverRepo = caregiverRepo;
+
     }
 
     @Bean
@@ -36,6 +41,7 @@ public class LoadDatabase {
             PermissionEntity update = PermissionEntity.builder().name("UPDATE").build();
             PermissionEntity delete = PermissionEntity.builder().name("DELETE").build();
 
+            String password = encoder.encode("1234");
             // Create ROLES
             RoleEntity admin = RoleEntity.builder()
                     .roleEnum(RoleEnum.ADMIN)
@@ -50,7 +56,7 @@ public class LoadDatabase {
             // Create USERS
             Caregiver alejandra = Caregiver.builder()
                     .username("alejandra")
-                    .password("1234")
+                    .password(password)
                     .isEnabled(true)
                     .accountNoExpired(true)
                     .accountNoLocked(true)
@@ -60,7 +66,7 @@ public class LoadDatabase {
 
             Caregiver pepe = Caregiver.builder()
                     .username("pepe")
-                    .password("1234")
+                    .password(password)
                     .isEnabled(true)
                     .accountNoLocked(true)
                     .accountNoExpired(true)
@@ -70,7 +76,7 @@ public class LoadDatabase {
 
             Caregiver marco = Caregiver.builder()
                     .username("marco")
-                    .password("1234")
+                    .password(password)
                     .isEnabled(true)
                     .accountNoLocked(true)
                     .accountNoExpired(true)
@@ -80,7 +86,7 @@ public class LoadDatabase {
 
             Caregiver cris = Caregiver.builder()
                     .username("cristopher")
-                    .password("1234")
+                    .password(password)
                     .isEnabled(true)
                     .accountNoLocked(true)
                     .accountNoExpired(true)
@@ -91,14 +97,14 @@ public class LoadDatabase {
             caregiverRepo.saveAll(List.of(alejandra, pepe, marco, cris));
 
             // NOTE example
-            Caregiver ale = caregiverRepo.findByUsername("alejandra");
+            Optional<Caregiver> ale = caregiverRepo.findByUsername(alejandra.getUsername());
 
             Note note = Note.builder()
                     .title("Nota de ejemplo")
                     .detail("Puedes agregar todas las notas que necesites")
                     .date(LocalDate.of(2024, 10, 3))
                     .active(true)
-                    .caregiver(ale)
+                    .caregiver(ale.orElseThrow(() -> new CaregiverNotFoundException(alejandra.getUsername())))
                     .build();
 
             log.info("Preloading " + alejandra.getUsername());

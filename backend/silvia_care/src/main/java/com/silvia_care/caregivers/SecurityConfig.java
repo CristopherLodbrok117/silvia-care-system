@@ -15,6 +15,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -25,7 +26,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity // For request matching config in controllers
+//@EnableMethodSecurity // For request matching config in controllers
 public class SecurityConfig {
 
     @Bean
@@ -35,12 +36,10 @@ public class SecurityConfig {
                 .httpBasic(Customizer.withDefaults()) // Credentials(user, password)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http ->{
-                    // Public requests
-                    http.requestMatchers(HttpMethod.POST, "/api/users/login").permitAll();
+                    http.requestMatchers(HttpMethod.GET, "api/v1/notes").hasAuthority("READ");
+                    http.requestMatchers(HttpMethod.POST, "api/v1/notes").hasAnyRole("ADMIN", "USER");
 
-                    // Any other request
-                    //http.anyRequest().authenticated();
-                    http.anyRequest().permitAll(); // Only for testing
+                    http.anyRequest().permitAll();
                 })
                 .build();
     }
@@ -51,11 +50,11 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider() {
+    public AuthenticationProvider authenticationProvider(CaregiverDetailService caregiverDetailService) {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
 
         provider.setPasswordEncoder(passwordEncoder());
-        provider.setUserDetailsService(userDetailsService());
+        provider.setUserDetailsService(caregiverDetailService);
 
         return provider;
     }
@@ -82,11 +81,18 @@ public class SecurityConfig {
                 .authorities("READ")
                 .build());
 
+        userDetailsList.add(User.withUsername("cristopher")
+                .password("1234")
+                .roles("ADMIN")
+                .authorities("READ")
+                .build());
+
         return new InMemoryUserDetailsManager(userDetailsList);
     }
 
     @Bean
     public PasswordEncoder passwordEncoder(){
-        return NoOpPasswordEncoder.getInstance(); // Only for testing
+        //return NoOpPasswordEncoder.getInstance(); // Only for testing
+        return new BCryptPasswordEncoder();
     }
 }

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/caregivers")
+@RequestMapping("/api/v1/caregivers")
 public class CaregiverController {
 
     private CaregiverService service;
@@ -34,12 +34,4 @@ public class CaregiverController {
         return ResponseEntity.ok(caregiver);
     }
 
-
-
-    @PostMapping("/login")
-    public ResponseEntity<Boolean> login(@RequestBody Caregiver caregiver){
-        Boolean connected = service.login(caregiver);
-
-        return ResponseEntity.ok(connected);
-    }
 }

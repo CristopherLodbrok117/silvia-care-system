@@ -1,6 +1,7 @@
 package com.silvia_care.caregivers;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +11,7 @@ import java.util.Optional;
 @Qualifier("caregiverRepository")
 @Repository
 public interface CaregiverRepository extends CrudRepository<Caregiver, Long> {
-    Caregiver findByUsername(String username);
+    Optional<Caregiver> findByUsername(String username);
 
     Optional<Caregiver> findByUsernameAndPassword(String name, String password);
 

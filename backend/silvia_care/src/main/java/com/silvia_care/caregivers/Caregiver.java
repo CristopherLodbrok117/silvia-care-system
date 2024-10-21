@@ -40,8 +40,8 @@ public class Caregiver {
     @Column(name = "credential_no_expired")
     private boolean credentialNoExpired;
 
-    @OneToMany(targetEntity = Note.class, fetch = FetchType.LAZY, mappedBy = "caregiver")
-    private List<Note> notes = new ArrayList<>();
+    /*@OneToMany(targetEntity = Note.class, fetch = FetchType.LAZY, mappedBy = "caregiver")
+    private List<Note> notes = new ArrayList<>();*/
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "caregiver_roles", joinColumns = @JoinColumn(name = "caregiver_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
